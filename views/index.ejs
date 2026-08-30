@@ -27,7 +27,7 @@
     <p>    
         <%= entries.length >= 31 
             ? entries[entries.length - 31].entry 
-            : "Just " + (31 - entries.length) + " to go!" %>
+            : "Just " + (30 - entries.length) + " to go!" %>
     </p>
 </div>
 
@@ -48,8 +48,6 @@
     <div class="stats">
         <p>Num entries recorded: <%= entries.length %></p>
         <p>Num words written: <%= wordsWritten %></p>
-        <p>Num entries:</p>
-        <p>Average Rating:</p>
     </div>
 
 <script>
