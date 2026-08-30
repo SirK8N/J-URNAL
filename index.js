@@ -139,6 +139,12 @@ app.get("/edit/:date", (req, res) => {
     });
 })
 
+app.get("/edit/delete/:date", (req, res) => {
+    const { date } = req.params;
+    deleteFileFromPublic("entry_" + date);
+    res.redirect("/");
+})
+
 function listFiles(dirPath) {
     try {
         // Read directory contents

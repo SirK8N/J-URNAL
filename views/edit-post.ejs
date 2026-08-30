@@ -3,6 +3,9 @@
 <div class="entry-entry">
     <div class="portal">
         <img src="/images/spinning-book.gif">
+        <a type="button-link" href=<%= `/edit/delete/${entry.date}` %> class="prev-next">
+        Delete Post!
+        </a>
         <form action="/edit/submit" id="entry-form" method="post">
             <label for="date">Date</label>
             <input class="entry-info" id="date" type="date" name="date" value=<%= entry.date %> >
