@@ -1,0 +1,71 @@
+<%- include("./partials/header.ejs") %>    
+<div class="entry-container">
+        <div class="yearly-entry">
+    <h2>Last Entry, <%= entries[entries.length - 2].date %></h2>
+    <p><%= entries[entries.length - 2].entry.slice(0, 200) + "..." %></p>
+</div>
+
+<div class="yearly-entry">
+    <h2>
+        <%= entries.length >= 7 
+            ? "Seven Ago, " + entries[entries.length - 7].date 
+            : "Unlock By writing 7 entries!" %>
+    </h2>  
+    <p>    
+        <%= entries.length >= 7 
+            ? entries[entries.length - 7].entry 
+            : "Just " + (7 - entries.length) + " to go!" %>
+    </p>
+</div>
+
+<div class="yearly-entry">
+    <h2>
+        <%= entries.length >= 31 
+            ? "Thirty Ago, " + entries[entries.length - 31].date
+            : "Unlock By writing 30 entries!" %>
+    </h2>  
+    <p>    
+        <%= entries.length >= 31 
+            ? entries[entries.length - 31].entry 
+            : "Just " + (31 - entries.length) + " to go!" %>
+    </p>
+</div>
+
+<div class="yearly-entry">
+    <h2>
+        <%= entries.length >= 366 
+            ? "Three Hundred and Sixty-Five Ago, " + entries[entries.length - 366].date 
+            : "Unlock By writing 365 entries!" %>
+    </h2>
+    <p>    
+        <%= entries.length >= 366 
+            ? entries[entries.length - 366].entry 
+            : "Just " + (366 - entries.length) + " to go!" %>
+    </p>
+</div>
+</div>
+    </div>
+    <div class="stats">
+        <p>Num entries recorded: <%= entries.length %></p>
+        <p>Num words written: <%= wordsWritten %></p>
+        <p>Num entries:</p>
+        <p>Average Rating:</p>
+    </div>
+
+<script>
+  document.querySelectorAll(".yearly-entry").forEach(function(element) {
+    element.addEventListener("click", function(event) {
+      console.log(this.children[0].innerText.slice(this.children[0].innerText.length-10, this.children[0].innerText.length));
+      var date = this.children[0].innerText.slice(this.children[0].innerText.length-10, this.children[0].innerText.length);
+      if(date[0] == 2) {
+        document.location.href = `read/post/${date}`;
+      }
+      else {
+        console.log("Not a date");
+      }
+    //   document.location.href = `read/post/${date}`;
+
+    });
+  });
+</script>
+<%- include("./partials/footer.ejs") %>

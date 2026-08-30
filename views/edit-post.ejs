@@ -1,0 +1,19 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="entry-entry">
+    <div class="portal">
+        <img src="/images/spinning-book.gif">
+        <form action="/edit/submit" id="entry-form" method="post">
+            <label for="date">Date</label>
+            <input class="entry-info" id="date" type="date" name="date" value=<%= entry.date %> >
+            <label for="entry">Entry</label>
+            <textarea class="entry-info" id="entry" type="text" name="entry"> <%= entry.entry %> </textarea>
+            <label for="tldr">tldr</label>
+            <input  class="entry-info" id="tldr" type="text" name="tldr" value=<%= entry.tldr %>>
+            <button type="submit" value="Submit">Submit</button> 
+        </form>
+        <img src="/images/spinning-book.gif">
+    </div>
+</div>
+
+<%- include("./partials/footer.ejs") %>

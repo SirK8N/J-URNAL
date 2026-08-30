@@ -1,0 +1,170 @@
+body {
+    background-color: #fff9ef;
+    font-family: "Bricolage Grotesque";
+    background-image: url("/images/Paper-Texture-PNG-HD-Image.png") ;
+}
+
+.header {
+    min-width: 500px;
+    max-width: 100%;
+    display: flex;
+    border-radius: 5px;
+    background-color: #8493AA;
+    height: 4.6rem;
+}
+
+.menu {
+    list-style: none;
+    font-family: "Anonymous Pro";
+    font-weight: bold;
+    color: #FFF9EF;
+    max-height: 4.6rem;
+    margin-top: 4px;
+}
+
+
+
+.menu > li {
+    margin-bottom: 5px;
+    text-decoration: none;
+    &:hover {
+        transition: 100ms;
+        transform: scale(1.05);
+    }
+}
+
+.wre {
+   color: #FFF9EF;
+   text-decoration: none;
+}
+
+.title {
+    font-family: "BBH Bartle";
+    color: #FFF9EF;
+    padding-top: 21.5px;
+    transition: 500ms;
+    &:hover {
+        transition: 500ms;
+        padding-top: 0px;
+        cursor: pointer;
+    }
+}
+
+.bookshelf {
+    margin-top: 0px;
+}
+
+.yearly-entry {
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: #efd09e61;
+}
+
+.yearly-entry:hover {
+    transition: 200ms;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+h2, p {
+    font-family: "Anonymous Pro";
+    margin: 15px
+}
+
+.entry-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+    grid-template-rows: repeat(1, 1fr);    /* 4 equal rows */
+    gap: 10px;                             /* Space between cells */
+    width: 100;                         /* Keep square shape */
+    height: 100;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.stats {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #8493AA;
+    border-radius: 5px;
+}
+
+.stats > p {
+    color: #FFF9EF;
+}
+
+.portal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    
+}
+
+#entry-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.entry-info {
+    background: #efd09e61;
+    text-align: start;
+    border-radius: 5px;
+    font-family: "Bricolage Grotesque";
+    
+    margin-bottom: 30px;
+    
+}
+
+label {
+    font-family: "Anonymous Pro";
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: larger;
+}
+
+#entry {
+    height: 500px;
+}
+
+#date {
+    width: 120px;
+}
+
+.post-viewer {
+    margin-top: 50px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1fr;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+}
+
+.post-self {
+    width: 100%;
+    background-color: #efd09e61;
+}
+
+.prev-next {
+    height: 50px;
+    width: 50px;
+    margin-left: 50px;
+    text-decoration: none;
+    background-color: #8493AA;
+    border-radius: 5px;
+    font-family: "Anonymous Pro";
+    color: #fff9ef;
+    width: 70px;
+    padding-top: 10px;
+}
+
+.button-link {
+    text-align: center;
+}

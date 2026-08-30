@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jō</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/bookshelf.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=BBH+Bartle&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">JōURNAL</h1>
+        <ul class="menu">
+            <li><a class="wre" href="/read">read</a></li>
+            <li><a class="wre" href="/writ">writ</a></li>
+            <li><a class="wre" href="/edit">edit</a></li>
+        </ul>
+        <div class="bookshelf" style="margin-top: 0px; margin-lef: 20px;">
+            <% var limit = locals.entries ? entries.length : 0; %>
+            <% for(var i = limit; i >= 1; i--) { %>
+                <a href=<%= `/read/post/${entries[i - 1].date}` %>><div class="book">
+                <div class="side spine">
+                    <span class="spine-title"> <%= entries[i - 1].date %> </span>
+                </div>
+                <div class="side top"></div>
+                <div class="side cover"><%= entries[i - 1].tldr %> </div>
+                </div>
+                </a>
+            <% } %>
+            
+        </div>
+    </div>

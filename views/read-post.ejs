@@ -1,0 +1,34 @@
+<%- include("./partials/header.ejs") %>    
+
+<% console.log(next, prev); %>
+
+<div class="post-viewer">
+    <a type="button-link" href=<%= "/read/post/" + prev.date %> class="prev-next">
+        View Prior
+    </a>
+    <div class="post-self">
+        <h2><%= post.date %></h2>
+        <h2><%= post.tldr %></h2>
+        <p><%= post.entry %></p>
+    </div>
+    <a type="button-link" href=<%= "/read/post/" + next.date %> class="prev-next">
+        View Next
+    </a>
+</div>
+
+
+<script>
+  window.onload = function () {
+  const isFirst = <%= Boolean(locals.first) %>;
+  const isLast = <%= Boolean(locals.last) %>;
+
+  if (isFirst) {
+    alert("This is your oldest entry");
+  }
+  if (isLast) {
+    alert("This is your newest entry");
+  }
+  };
+</script>
+
+<%- include("./partials/footer.ejs") %>
