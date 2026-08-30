@@ -1,8 +1,16 @@
 <%- include("./partials/header.ejs") %>    
 <div class="entry-container">
-        <div class="yearly-entry">
-    <h2>Last Entry, <%= entries[entries.length - 2].date %></h2>
-    <p><%= entries[entries.length - 2].entry.slice(0, 200) + "..." %></p>
+<div class="yearly-entry">
+    <h2>
+        <%= entries.length >= 2 
+            ? "Seven Ago, " + entries[entries.length - 2].date 
+            : "Unlock By writing 2 entries!" %>
+    </h2>  
+    <p>    
+        <%= entries.length >= 2 
+            ? entries[entries.length - 2].entry 
+            : "Just " + (2 - entries.length) + " to go!" %>
+    </p>
 </div>
 
 <div class="yearly-entry">
@@ -27,7 +35,7 @@
     <p>    
         <%= entries.length >= 31 
             ? entries[entries.length - 31].entry 
-            : "Just " + (30 - entries.length) + " to go!" %>
+            : "Just " + (3 - entries.length) + " to go!" %>
     </p>
 </div>
 

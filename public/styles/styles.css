@@ -180,3 +180,7 @@ label {
 .button-link {
     text-align: center;
 }
+
+.delete {
+    padding-left: 5px;
+}
