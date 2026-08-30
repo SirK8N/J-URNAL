@@ -52,7 +52,7 @@ app.post("/writ/submit", (req, res) => {
 app.post("/edit/submit", (req, res) => {
   console.log(req.body);
   console.log(req.body["entry"]);
-  req.body["entry"] = req.body["entry"] + `\n \n edited on ${dateString}`
+  req.body["entry"] = req.body["entry"] + `\n \n   [edited on ${dateString}]`
   fs.writeFile(`./public/entries/entry_${req.body["date"]}`, JSON.stringify(req.body), err => {
     if (err) {
     console.error(err);
@@ -98,12 +98,15 @@ app.get("/read/post/:date", (req, res) => {
 
 
 app.get("/read", (req, res) => {
-    res.render("read.ejs");
+    console.log(dateString);
+    var entries = listFiles("./public/entries/");
+    res.render("read.ejs", {date: dateString, entries: entries});
 });
 
 app.get("/edit", (req, res) => {
+    console.log(dateString);
     var entries = listFiles("./public/entries/");
-    res.render("edit.ejs", {entries: entries});
+    res.render("edit.ejs", {date: dateString, entries: entries});
 });
 
 app.get("/edit/:date", (req, res) => {

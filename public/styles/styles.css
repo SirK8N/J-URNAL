@@ -66,6 +66,18 @@ body {
     cursor: pointer;
 }
 
+.read-entry {
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: #efd09e61;
+}
+
+.read-entry:hover {
+    transition: 200ms;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
 h2, p {
     font-family: "Anonymous Pro";
     margin: 15px

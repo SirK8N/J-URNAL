@@ -1,5 +1,33 @@
 <%- include("./partials/header.ejs") %>
 
+<% entries.forEach(element => { %>
+    <div class="read-entry">
+        <h2>
+           <%= element.date%>
+        </h2>  
+        <p>
+            <%= element.entry.length >= 150
+            ? element.entry.slice(0, 150) + "..."
+            : element.entry %>
+        </p>
+    </div>
+<% }) %>
 
+<script>
+  document.querySelectorAll(".read-entry").forEach(function(element) {
+    element.addEventListener("click", function(event) {
+      console.log(this.children[0].innerText.slice(this.children[0].innerText.length-10, this.children[0].innerText.length));
+      var date = this.children[0].innerText.slice(this.children[0].innerText.length-10, this.children[0].innerText.length);
+      if(date[0] == 2) {
+        document.location.href = `edit/${date}`;
+      }
+      else {
+        console.log("Not a date");
+      }
+    //   document.location.href = `read/post/${date}`;
+
+    });
+  });
+</script>
 
 <%- include("./partials/footer.ejs") %>
