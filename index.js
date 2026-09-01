@@ -10,6 +10,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const port = 2000;
 
 const app = express();
+app.set("views", path.join(__dirname, "views"));
+
+let entriesDir = path.join(__dirname, "public", "entries");
+
+export function setEntriesDir(dir) {
+    entriesDir = dir;
+}
 
 const date = new Date();
 const year = date.getFullYear();
@@ -22,24 +29,24 @@ var visit_entry = dateString;
 
 app.use(express.urlencoded({extended: true}));
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 
 app.get("/", (req, res) => {
-    var entries = listFiles("./public/entries/");
+    var entries = listFiles(entriesDir);
     var wordsWritten = calculateWordsWritten(entries);
     res.render("index.ejs", {entries: entries, wordsWritten: wordsWritten});
 })
 
 app.get("/writ", (req, res) => {
     console.log(dateString);
-    var entries = listFiles("./public/entries/");
+    var entries = listFiles(entriesDir);
     res.render("writ.ejs", {date: dateString, entries: entries});
 });
 
 app.post("/writ/submit", (req, res) => {
   console.log(req.body);
-  fs.writeFile(`./public/entries/entry_${req.body["date"]}`, JSON.stringify(req.body), err => {
+  fs.writeFile(path.join(entriesDir, `entry_${req.body["date"]}`), JSON.stringify(req.body), err => {
     if (err) {
     console.error(err);
     } else {
@@ -53,7 +60,7 @@ app.post("/edit/submit", (req, res) => {
   console.log(req.body);
   console.log(req.body["entry"]);
   req.body["entry"] = req.body["entry"] + `\n \n   [edited on ${dateString}]`
-  fs.writeFile(`./public/entries/entry_${req.body["date"]}`, JSON.stringify(req.body), err => {
+  fs.writeFile(path.join(entriesDir, `entry_${req.body["date"]}`), JSON.stringify(req.body), err => {
     if (err) {
     console.error(err);
     } else {
@@ -65,7 +72,7 @@ app.post("/edit/submit", (req, res) => {
 
 app.get("/read/post/:date", (req, res) => {
     const { date } = req.params;
-    var entries = listFiles("./public/entries/");
+    var entries = listFiles(entriesDir);
     entries.forEach(element => {
         var index = entries.indexOf(element);
         var first = false;
@@ -75,7 +82,7 @@ app.get("/read/post/:date", (req, res) => {
                 first = true;
                 var self = element;
                 console.log(first);
-                res.render("read-post.ejs", {post: element, entries: entries, 
+                res.render("read-post.ejs", {post: element, entries: entries,
                 prev: self, next: entries[index+1], 
                 first: first, last: last});
             }
@@ -99,19 +106,19 @@ app.get("/read/post/:date", (req, res) => {
 
 app.get("/read", (req, res) => {
     console.log(dateString);
-    var entries = listFiles("./public/entries/");
+    var entries = listFiles(entriesDir);
     res.render("read.ejs", {date: dateString, entries: entries});
 });
 
 app.get("/edit", (req, res) => {
     console.log(dateString);
-    var entries = listFiles("./public/entries/");
+    var entries = listFiles(entriesDir);
     res.render("edit.ejs", {date: dateString, entries: entries});
 });
 
 app.get("/edit/:date", (req, res) => {
     const { date } = req.params;
-    var entries = listFiles("./public/entries/");
+    var entries = listFiles(entriesDir);
     entries.forEach(element => {
         var index = entries.indexOf(element);
         var first = false;
@@ -121,7 +128,7 @@ app.get("/edit/:date", (req, res) => {
                 first = true;
                 var self = element;
                 console.log(first);
-                res.render("edit-post.ejs", {entry: element, entries: entries, 
+                res.render("edit-post.ejs", {entry: element, entries: entries,
                 prev: self, next: entries[index+1], 
                 first: first, last: last});
             }
@@ -174,7 +181,7 @@ function listFiles(dirPath) {
 function deleteFileFromPublic(fileName) {
     try {
         // Resolve the file path securely
-        const filePath = path.join(__dirname, 'public', 'entries', fileName);
+        const filePath = path.join(entriesDir, fileName);
 
         // Check if file exists before deleting
         if (fs.existsSync(filePath)) {
@@ -201,6 +208,11 @@ function calculateWordsWritten(entries, ) {
     return sum;
 }
 
-app.listen(port, () => {
-    console.log(`Server on ${port}`);
-})
+export function startServer() {
+    return new Promise((resolve) => {
+        app.listen(port, () => {
+            console.log(`Server on ${port}`);
+            resolve(port);
+        });
+    });
+}
