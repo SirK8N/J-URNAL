@@ -10,7 +10,7 @@ This is a project I made over the course of a few days, it runs on vanilla html,
 - Read, write and edit your daily entries. This application functions best when one writes daily one entry at the end of the day like I habitually do.
 - View yesterday, yesterweek, yestermonth, and yesteryear's entries to keep your memories sharp.
 - After you clone and compile, use the desktop application for hassle free bootup - powered by electron.
-- 
+
 ## Acknowledgements
 Book Animations adapted from <a href="https://github.com/petargyurov/virtual-bookshelf/blob/main/bookshelf.css">Virtual Bookshelf</a> by <a href="https://github.com/petargyurov">Petar Gyurov</a> and <a href="https://github.com/petargyurov/virtual-bookshelf/blob/main/bookshelf.css">Roy Moore</a>
 
