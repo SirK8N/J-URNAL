@@ -11,6 +11,20 @@ This is a project I made over the course of a few days, it runs on vanilla html,
 - View yesterday, yesterweek, yestermonth, and yesteryear's entries to keep your memories sharp.
 - After you clone and compile, use the desktop application for hassle free bootup - powered by electron.
 
+## Compiling the desktop app
+`node_modules/` and `dist/` are gitignored, so after cloning you'll need to install dependencies and build the installer yourself:
+
+```bash
+git clone <repo-url>
+cd JōURNAL
+npm install
+npm run dist
+```
+
+This runs `electron-builder --win` and produces a Windows installer (`Journal Setup 1.0.0.exe`) in `dist/`. Run that installer to get the desktop app.
+
+If you just want to try the app without building an installer, use `npm run electron` instead to launch it directly via Electron.
+
 ## Acknowledgements
 Book Animations adapted from <a href="https://github.com/petargyurov/virtual-bookshelf/blob/main/bookshelf.css">Virtual Bookshelf</a> by <a href="https://github.com/petargyurov">Petar Gyurov</a> and <a href="https://github.com/petargyurov/virtual-bookshelf/blob/main/bookshelf.css">Roy Moore</a>
 
