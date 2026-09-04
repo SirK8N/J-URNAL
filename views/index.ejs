@@ -28,14 +28,14 @@
 
 <div class="yearly-entry">
     <h2>
-        <%= entries.length >= 31 
-            ? "Thirty Ago, " + entries[entries.length - 31].date
+        <%= entries.length >= 30
+            ? "Thirty Ago, " + entries[entries.length - 30].date
             : "Unlock By writing 30 entries!" %>
     </h2>  
     <p>    
-        <%= entries.length >= 31 
-            ? entries[entries.length - 31].entry 
-            : "Just " + (3 - entries.length) + " to go!" %>
+        <%= entries.length >= 30
+            ? entries[30 - entries.length].entry 
+            : "Just " + (30 - entries.length) + " to go!" %>
     </p>
 </div>
 
